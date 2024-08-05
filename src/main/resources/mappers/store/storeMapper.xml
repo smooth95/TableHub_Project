@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hub.root.store.mybatis.storeMapper">
+
+<resultMap type="com.hub.root.store.DTO.storeInfoDTO" id="storeInfo">
+		<id property="store_id" column="store_id" /> <!-- 사업자번호 -->
+		<result property="store_name" column="store_name"/>
+		<result property="store_pwd" column="store_pwd"/>
+		<result property="store_email" column="store_email"/>
+		<result property="store_phone" column="store_phone"/> <!-- 사장 전번 -->
+		<result property="store_main_phone" column="store_main_phone"/> <!-- 가게 전번 -->
+		<result property="store_zip" column="store_zip"/>
+		<result property="store_add" column="store_add"/>
+		<result property="store_add_info" column="store_add_info"/>
+		<result property="store_category" column="store_category"/>
+		<result property="store_amenities" column="store_amenities"/>
+		<result property="store_note" column="store_note"/>
+		<result property="store_introduce" column="store_introduce"/>
+		<result property="store_booking_rule" column="store_booking_rule"/>
+		<result property="store_business_hours" column="store_business_hours"/>
+		<result property="store_max_person" column="store_max_person"/>
+		<result property="store_max_team" column="store_max_team"/>
+		<result property="store_open_status" column="store_open_status"/>
+	</resultMap>
+<resultMap type="com.hub.root.store.DTO.storeMenuDTO" id="storeMenu">
+		<id property="store_id" column="store_id" /> <!-- 사업자번호 -->
+		<result property="store_menu_img" column="store_menu_img"/>
+		<result property="store_menu_name" column="store_menu_name"/>
+		<result property="store_menu_detail" column="store_menu_detail"/>
+		<result property="store_menu_category" column="store_menu_category"/>
+		<result property="store_menu_price" column="store_menu_price"/>
+	</resultMap>
+<resultMap type="com.hub.root.store.DTO.storeReviewDTO" id="storeReview">
+		<id property="store_id" column="store_id" /> <!-- 사업자번호 -->
+		<result property="member_id" column="member_id"/>
+		<result property="store_review_num" column="store_review_num"/>
+		<result property="store_review_body" column="store_review_body"/>
+		<result property="store_review_date_create" column="store_review_date_create"/>
+		<result property="store__review_score" column="store__review_score"/>
+		<result property="booking_id" column="booking_id"/>
+	</resultMap>
+<resultMap type="com.hub.root.store.DTO.storeReviewImgDTO" id="storeReviewImg">
+		<id property="store_id" column="store_id" /> <!-- 사업자번호 -->
+		<result property="store_review_num" column="store_review_num"/>
+		<result property="store_review_img_image" column="store_review_img_image"/>
+	</resultMap>
+<resultMap type="com.hub.root.store.DTO.storeBookmarkDTO" id="storeBookmark">
+		<id property="store_id" column="store_id" /> <!-- 사업자번호 -->
+		<result property="member_id" column="member_id"/>
+	</resultMap>
+	<resultMap type="com.hub.root.store.DTO.MDTO" id="mDTO">
+		<result property="member_phone" column="member_phone"/>
+	</resultMap>
+	
+	<resultMap type="com.hub.root.member.dto.MemberDTO" id="member">
+		<id property="id" column="member_id" />
+		<result property="pwd" column="member_pwd"/>
+		<result property="nick" column="member_nick"/>
+		<result property="email" column="member_email"/>
+		<result property="phone" column="member_phone"/>
+		<result property="birth" column="member_birth"/>
+		<result property="gender" column="member_gender"/>
+		<result property="img" column="member_img"/>
+		<result property="status" column="member_status"/>
+		<result property="dateCreate" column="member_date_create"/>
+		<result property="admin" column="member_admin"/>
+	</resultMap>
+	
+	
+	<select id="storeInfo" resultMap="storeInfo">
+		SELECT * FROM store_info WHERE store_id = #{store_id}
+	</select>	
+	
+	<select id="storeImgMain" resultType="java.lang.String">
+		SELECT DISTINCT store_img_root FROM store_img 
+			WHERE store_id = #{store_id} AND store_img_main = 1
+	</select>	
+	<select id="storeImg" resultType="java.lang.String">
+		SELECT DISTINCT store_img_root FROM store_img 
+			WHERE store_id = #{store_id} AND store_img_main = 9
+	</select>	
+	
+	<select id="storeMenu" resultMap="storeMenu">
+		SELECT * FROM store_menu WHERE store_id = #{store_id}
+	</select>	
+	
+	<select id="storeReview" resultMap="storeReview">
+		SELECT * FROM store_review WHERE store_id = #{store_id}
+	</select>	
+
+	<select id="reviewImage" resultMap="storeReviewImg">
+		SELECT * FROM store_review_img 
+			WHERE store_id = #{store_id}
+	</select>
+	
+	<select id="storeReviewImg" resultType="java.lang.String">
+		SELECT store_review_img_image FROM store_review_img 
+			WHERE store_id = #{store_id}
+	</select>
+		
+	<select id="storeBookmark" resultMap="storeBookmark">
+		SELECT * FROM store_bookmark WHERE store_id = #{store_id}
+	</select>
+	
+	<select id="jjimchk" resultType="java.lang.Integer">
+		select count(*) from store_bookmark 
+			where store_id = #{store_id} and member_id = #{user_id}
+	</select>
+	
+	<insert id="jjim">
+		insert into store_bookmark(store_id, member_id)
+			values (#{store_id}, #{user_id}) 
+	</insert>
+	
+	<delete id="jjimcancle">
+		DELETE FROM store_bookmark 
+			WHERE store_id = #{store_id} and member_id = #{user_id}
+	</delete>
+
+	<select id="memberInfo" resultType="java.lang.String">
+		SELECT member_img FROM member_info 
+			WHERE member_id = #{matchID}
+	
+	</select>
+	
+</mapper>

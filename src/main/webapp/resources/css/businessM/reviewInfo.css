@@ -1,0 +1,121 @@
+
+.white_box{
+	width : 785px;
+/* 	min-height : 500px; */
+	background-color: white;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column; /* 컬럼 방향으로 요소들을 배열 */
+/*     justify-content: center; 세로 방향 중앙 정렬 */
+/*     align-items: center; 가로 방향 중앙 정렬 */
+/*   	text-align : center; */
+}
+
+#reviewContainer {
+	width : 770px;
+}
+#reviewContentWrapper {
+	box-sizing: border-box;
+	margin : 0 20px 0 20px;
+}
+
+.center-box{
+	display: flex;
+ 	flex-direction: column;
+ 	justify-content: center;
+  	align-items: center;
+  	padding : 80px;
+	
+}
+
+.reviewContent {
+	display: flex;
+	box-sizing: border-box;
+	padding: 10px 0 10px 0;
+}
+.reviewLeft {
+	width : 600px;
+}
+.reviewLeftTop {
+	height : 40px;
+	display: flex;
+	align-items: center;
+	margin-left: 10px;
+}
+.reviewerImg {
+	width: 40px;
+	height : 40px;
+	border-radius : 20px;
+	display: inline-block;
+}
+.reviewerNick {
+	margin-left: 10px;
+	font-weight: bold;
+}
+.reviewLeftBottom {
+	height: 40px;
+	padding: 10px;
+}
+.reviewText {
+	width: 550px;
+	height : 40px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+
+.reviewRight {
+	height: 100px;
+	align-content: center;
+}
+.reviewImg {
+	width : 120px;
+	height : 80px;
+	margin-bottom: -2px;
+}
+
+.reviewDelete {
+	width: 50px;
+	color: gray;
+	font-weight: bold;
+	text-align: right;
+}
+.reviewDeleteBtn {
+	cursor: pointer;
+}
+
+
+
+#reviewPaging {
+	width: 100%;
+	text-align: center;
+	padding: 10px;
+}
+
+.reviewPage, .reviewPageBefore {
+	width: 20px;
+	font-weight: bold;
+	color: #adadad;
+	cursor: pointer;
+	display: inline-block;
+}
+.reviewPageSpacing {
+	color: #dadada;
+}
+
+.pageBtnDisabled {
+	color: #ebebeb;
+	cursor: default;
+}
+
+
+
+
+
+
+
+
+

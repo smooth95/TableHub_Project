@@ -1,0 +1,312 @@
+@charset "UTF-8";
+#bodyWrapper {
+	display: flex;
+	margin: auto;
+	width: 1000px;
+	justify-content: space-between;
+	text-align: center;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	
+}
+#loginWrapper {
+	display: flex;
+	flex-direction: column;
+	background-color: white;
+	width: 490px;
+	background-color: white;
+	border: 1px solid #b5b5b5;
+	height: 820px;
+	margin-bottom: 20px;
+	box-sizing: border-box;
+}
+.title {
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+#registerWrapper {
+	display: flex;
+	flex-direction: column;
+	background-color: white;
+	width: 490px;
+	background-color: white;
+	border: 1px solid #b5b5b5;
+	height: 820px;
+	margin-bottom: 20px;
+	box-sizing: border-box;
+}
+.inputField {
+	margin: auto;
+	width: 350px;
+/* 	height: 400px; */
+}
+.loginToggleBtn, .registerToggleBtn {
+	margin: auto 0 0 0;
+	padding: 10px 0;
+	width: 100%;
+	background-color: #bfbfbf;
+	color: #5d5d5d;
+	cursor: pointer;
+	transition: border-radius 0.5s ease-out;
+	border: 1px solid #b5b5b5;
+	box-sizing: border-box;
+}
+#slideLoginToggle {
+	transition: margin-top 2s ease-out;
+	margin-top: auto;
+}
+#slideRegisterToggle {
+	transition: margin-top 2s ease-out;
+	margin-top: auto;
+	
+}
+.registerToggleBtn {
+	transition: margin-top 0.5s ease-out;
+}
+
+#registerField {
+	margin: auto;
+	width: 350px;
+	height: 400px;
+}
+#loginWrapper .inputField #inputId,#inputPwd, #inputStorePwd {
+	width: 350px;
+	height: 40px;
+	font-size: 18px;
+	font-weight: bold;
+	border-top : 0;
+	border-left : 0;
+	border-right : 0;
+	border-bottom: 1px solid #004284;
+	margin-bottom: 20px;
+}
+#inputStoreId1, #inputStoreId2, #inputStoreId3 {
+	width: 100px;
+	height: 40px;
+	font-size: 18px;
+	font-weight: bold;
+	border-top : 0;
+	border-left : 0;
+	border-right : 0;
+	border-bottom: 1px solid #004284;
+	margin-bottom: 20px;
+	text-align: center;
+}
+#regisInputStoreId1, #regisInputStoreId2, #regisInputStoreId3 {
+	width: 100px;
+	height: 40px;
+	font-size: 18px;
+	font-weight: bold;
+	border-top : 0;
+	border-left : 0;
+	border-right : 0;
+	border-bottom: 1px solid #004284;
+	text-align: center;
+}
+#loginWrapper .inputField input ::placeholder {
+	color: #e8e8e8;
+}
+.inputField h2 {
+	text-align: left;
+	margin-bottom: 10px;
+	margin-left: -10px;
+}
+#registerField h2 {
+	text-align: left;
+	margin-bottom: 10px;
+	margin-left: -10px;
+}
+#loginBtn, #storeLoginBtn, #storeRegisterBtn {
+	margin-top: 10px;
+	width: 300px;
+	height: 40px;
+	font-size: 20px;
+	border: 0;
+	border-radius: 5px;
+	background-color: #4874e6;
+	color: white;
+	font-weight: bold;
+	cursor: pointer;
+}
+#loginBtn {
+	margin-bottom: 50px;
+}
+#storeLoginBtn {
+	margin-bottom: 50px;
+}
+#infoStoreRegisterMsg {
+	color: #ff6868;
+}
+
+#searchId, #searchPwd, #searchStorePwd {
+	font-size: 12px;
+	cursor: pointer;
+	color: #00006a;
+	font-weight: bold;
+}
+
+#infoMsg {
+	min-height: 40px;
+	text-align: left;
+	color: #ff6868;
+	font-size: 14px;
+}
+
+#emailLocal,#emailDomain {
+	width: 150px;
+	height: 40px;
+	font-size: 18px;
+	font-weight: bold;
+	border-top : 0;
+	border-left : 0;
+	border-right : 0;
+	padding: 0;
+	border-bottom: 1px solid #004284;
+}
+#storeEmailLocal,#storeEmailDomain {
+	width: 150px;
+	height: 40px;
+	font-size: 18px;
+	font-weight: bold;
+	border-top : 0;
+	border-left : 0;
+	border-right : 0;
+	padding: 0;
+	border-bottom: 1px solid #004284;
+}
+#userLogin {
+	margin-bottom: auto;
+}
+#storeLogin {
+	margin-bottom: auto;
+}
+#userRegister {
+	margin-bottom: auto;
+	height: 740px;
+}
+#storeRegister {
+	margin-bottom: auto;
+}
+
+#authCode {
+	width: 180px;
+	height: 40px;
+	font-size: 18px;
+	font-weight: bold;
+	border-top : 0;
+	border-left : 0;
+	border-right : 0;
+	border-bottom: 1px solid #004284;
+	text-align: center;
+}
+#storeAuthCode {
+	width: 180px;
+	height: 40px;
+	font-size: 18px;
+	font-weight: bold;
+	border-top : 0;
+	border-left : 0;
+	border-right : 0;
+	border-bottom: 1px solid #004284;
+	text-align: center;
+}
+
+#codeSendBtn, #storeRegisterCodeSendBtn { 
+	margin-top: 20px;
+	width: 300px;
+	height: 40px;
+	font-size: 18px;
+	border: 0;
+	border-radius: 5px;
+	background-color: #4874e6;
+	color: white;
+	cursor: pointer;
+	font-weight: bold;
+}
+#storeRegisterChkBtn {
+	margin-bottom: 10px;
+	width: 300px;
+	height: 40px;
+	font-size: 18px;
+	border: 0;
+	border-radius: 5px;
+	background-color: #4874e6;
+	color: white;
+	cursor: pointer;
+	font-weight: bold;
+	
+}
+#emailInfoMsg {
+	margin-top: 10px;
+	margin-bottom: 20px;
+	height: 30px;
+	font-size: 14px;
+}
+#registerBtn {
+	margin-top: 20px;
+	width: 160px;
+	height: 40px;
+	font-size: 18px;
+	border: 0;
+	border-radius: 5px;
+	background-color: #4874e6;
+	color: white;
+	cursor: pointer;
+	font-weight: bold;
+}
+#storeRegisterBtn {
+	margin-top: 20px;
+	width: 160px;
+	height: 40px;
+	font-size: 18px;
+	border: 0;
+	border-radius: 5px;
+	background-color: #4874e6;
+	color: white;
+	cursor: pointer;
+	font-weight: bold;
+}
+#registerBtnInfoMsg, #storeRegisterBtnInfoMsg {
+	margin-top: 10px;
+	margin-bottom: 20px;
+	height: 30px;
+	font-size: 14px;
+}
+
+#naver_id_login {
+	margin-bottom: 10px;
+	display: inline-block;	
+}
+#kakao_id_login {
+/* 	margin-bottom: 23px;	 */
+	display: inline-block;		
+}
+
+.fieldHr {
+	border-color: #d3defa;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+        input[type=number]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+::placeholder {
+	color: #d0d0d0;
+}
+#regisInputStoreId1:disabled, #regisInputStoreId2:disabled, #regisInputStoreId3:disabled {
+	color: gray;
+	background-color: #f6f6f6;
+} 
+
+#storeRegisterChkBtn:disabled, #storeRegisterCodeSendBtn:disabled,
+#codeSendBtn:disabled, #storeRegisterBtn:disabled {
+	background-color: #b6c8f5;
+	cursor: default;
+}
+
+#storeLogin, #storeRegister {
+	display: none;
+}
+

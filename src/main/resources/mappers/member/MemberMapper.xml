@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hub.root.member.mybatis.MemberMapper">
+	<resultMap type="com.hub.root.member.dto.MemberDTO" id="member">
+		<id property="id" column="member_id" />
+		<result property="pwd" column="member_pwd"/>
+		<result property="nick" column="member_nick"/>
+		<result property="email" column="member_email"/>
+		<result property="phone" column="member_phone"/>
+		<result property="birth" column="member_birth"/>
+		<result property="gender" column="member_gender"/>
+		<result property="img" column="member_img"/>
+		<result property="status" column="member_status"/>
+		<result property="dateCreate" column="member_date_create"/>
+		<result property="admin" column="member_admin"/>
+	</resultMap>
+
+	<select id="loginChk" resultMap="member">
+		select member_id,member_pwd,member_admin from member_info where member_id=#{id}
+	</select>
+	<select id="idChk" resultMap="member">
+		select * from member_info where member_id=#{id}
+	</select>
+	<select id="nickChk" resultMap="member">
+		select * from member_info where member_nick=#{nick}
+	</select>
+	<select id="mailChk" resultMap="member">
+		select * from member_info where member_email=#{email}
+	</select>
+	<insert id="register">
+		insert into member_info(
+			member_id, member_pwd, member_nick, 
+			member_email, member_phone, member_birth, 
+			member_gender, member_date_create, member_admin,
+			member_img, member_status
+		) values (
+			#{id}, #{pwd}, #{nick}, 
+			#{email}, #{phone}, #{birth}, 
+			#{gender}, #{dateCreate}, 0,
+			#{img}, #{status} )
+	</insert>
+	<select id="storeLoginChk" resultType="string">
+		select store_pwd from store_info where store_id=#{id}
+	</select>
+	<select id="storeChk" resultType="int">
+		select count(*) from store_info where store_id=#{storeId}
+	</select>
+	<select id="storeNumChk" resultType="int">
+		select count(*) from business_number where store_id=#{storeId}
+	</select>
+	<select id="storeMailChk" resultType="int">
+		select count(*) from store_info where store_email=#{email}
+	</select>
+	<insert id="storeRegisterChk">
+		insert into store_info(
+			store_id, store_pwd, store_name, store_email,
+			store_main_phone, store_phone
+		) values (
+			#{id}, #{pwd}, #{name}, #{email},
+			#{mainPhone}, #{phone})
+	</insert>
+	<select id="getMemId" resultType="String">
+		select member_id from member_info where member_email = #{email}
+	</select>
+	<select id="idEmailChk" resultType="int">
+		select count(*) from member_info where member_id=#{id} and member_email=#{email}
+	</select>
+	<update id="modifyPwd">
+		update member_info set member_pwd = #{pwd} where member_id = #{id}
+	</update>
+</mapper>

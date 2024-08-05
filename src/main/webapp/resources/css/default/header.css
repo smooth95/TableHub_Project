@@ -1,0 +1,119 @@
+@charset "UTF-8";
+
+		.flex-container{
+			display:flex;
+			width: 100%; /* 전체 너비를 고정 */
+			height:100px;
+			padding:20px;
+			justify-content:space-between;
+		    box-sizing: border-box; /* 패딩을 포함하여 너비를 계산 */
+		    white-space: nowrap; /* 요소들이 줄바꿈되지 않도록 설정 */
+		}
+		.a-item {
+			display:inline-flex;
+			justify-content:center;
+			align-items:center;
+			/*border:3px solid rgb(50,50,40);*/
+			padding:20px;
+			border:none;
+			text-decoration-line: none;
+			color:gray;
+			font-family:"Love Ya Like A Sister",fantasy;
+			white-space: nowrap; 
+		}
+		
+		/* 검색 기능 css */
+		
+		#search_keyword {
+		    border: 1px solid #bbb;
+		    border-radius: 8px;
+		    padding: 5px 12px;
+		    font-size: 14px;
+		    font-family: "Love Ya Like A Sister", fantasy;
+		    background-color: black;
+		    color: white;
+		}
+		
+		/* 검색 아이콘 스타일 */
+		
+		.search-icon {
+		    cursor: pointer;
+		}	
+		
+		/* 드롭다운 목록 스타일 */
+		
+		#search_category {
+		    border: 1px solid #bbb;
+		    border-radius: 8px;
+		    font-size: 14px;
+		    font-family: "Love Ya Like A Sister", fantasy;
+		    background-color: white; 
+		    color: #5d5d5d; 
+		    padding: 3px;
+		}
+		
+		/* 드롭다운 목록 옵션 스타일 */
+		
+		#search_category option {
+		    color: #5d5d5d; /* 드롭다운 목록 글자색 설정 */
+		}
+		#search_category option .search_option:hover {
+			color: green; 
+		}
+		.search {
+			display:flex;
+			position: relative;
+			border:3px solid rgb(50,50,40);
+			border:none;
+			padding:18px;
+			justify-content:center;
+			align-items:flex-center;
+			color:gray;
+			font-family:"Love Ya Like A Sister",fantasy;
+			white-space: nowrap; 
+		}
+		.input{
+			width: 50px;
+			border: 1px solid #bbb;
+			border-radius: 8px;
+			padding: 10px 12px;
+			font-size: 14px;
+			font-family:"Love Ya Like A Sister",fantasy;
+		}
+		.icon {
+			width: 20px;
+			position : absolute;
+			top: 10px;
+			right: 20px;
+			margin-top: 15px;
+			margin-right: 10px;
+			}
+			
+		/* 검색 기능 css end */
+		
+		.a-title {
+			display:flex;
+			border:3px solid rgb(50,50,40);
+			border:none;
+			padding:10px;
+			justify-content:center;
+			align-items:flex-end;
+			margin-left: 180px;
+			color:black;
+			font-size: 75px;
+			font-family:"Love Ya Like A Sister",fantasy;
+			white-space: nowrap; 
+			text-decoration-line: none;
+		}
+		.flex-sub-container-1 {
+			display: flex;
+			margin-top: 30px;
+			margin-left: 100px;
+			font-size: 20px;
+		}
+		.flex-sub-container-2 {
+			display: flex;
+			margin-top: 30px;
+			margin-right: 100px;
+			font-size: 20px;
+		}

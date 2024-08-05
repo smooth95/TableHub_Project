@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+#myContentWrapper {
+	width: 100%;
+	background-color: white;
+	border-radius: 10px;
+}
+
+#myContentmyInfo {
+	margin-left: 20px;
+}
+#myContentmyImg {
+	width: 50px;
+	height: 50px;
+	border-radius: 25px;
+	margin-right: 10px;
+}
+#myContentmyId {
+	display: inline-block;
+	height: 30px;
+}
+.myContentMenu:first-of-type {
+	margin-left: 20px;
+}
+.myContentMenu {
+	display: inline-block;	
+	margin: 10px -10px 5px 20px;
+	padding: 5px;
+	cursor: pointer;
+	text-decoration: none;
+	color: #1d1d1d;
+}
+
+.myContentHr {
+	margin: 5px;
+}
+.myContentTitle {
+	margin: 0;
+	padding: 20px 0 10px 20px;
+}
+
+.myCount {
+	font-size: 14px;
+	color: #5f5f5f;
+}

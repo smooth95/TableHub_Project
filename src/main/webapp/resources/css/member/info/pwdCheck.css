@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+#myPagePwdCheckWrapper {
+	width:750px;
+	height: 450px;
+	margin: auto;
+	text-align: center;
+	border: 1px solid black;
+}
+#pwdCheckTable {
+	border-spacing: none;
+	border-collapse: collapse;
+	margin: auto;
+	margin-top: 50px;
+}
+#pwdCheckBtn {
+	margin-top: 40px;
+	margin-bottom: 50px;
+	width: 250px;
+	height: 40px;
+	font-size: 20px;
+	border: 0;
+	border-radius: 5px;
+	background-color: #4874e6;
+	color: white;
+	font-weight: bold;
+	cursor: pointer;
+}
+.tableContent {
+	padding: 20px 20px 10px 20px;
+}
+.myPwdCheckInfo {
+	margin-top: 100px;
+	display: inline-block;
+	font-weight: bold;
+	font-size: 18px;
+}
+th {
+	background-color: #f2f2ff;
+}
+#pwdInfoMsg {
+	width: 350px;
+	display: inline-block;
+	font-size: 12px;
+	height : 16px;
+	color: #ff6f6f;
+	text-align: left;
+}
+
+.inputText {
+	width: 350px;
+	height: 40px;
+	font-size: 18px;
+	font-weight: bold;
+	border-top : 0;
+	border-left : 0;
+	border-right : 0;
+	border-bottom: 1px solid #004284;
+	margin-top: 10px;
+}

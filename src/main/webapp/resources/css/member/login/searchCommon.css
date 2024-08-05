@@ -1,0 +1,11 @@
+@charset "UTF-8";
+#myPageWrapper {
+	display: flex;
+	flex-direction: row;
+	width: 1000px;
+	margin: auto;
+	justify-content: space-between;
+	align-items: flex-start;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}

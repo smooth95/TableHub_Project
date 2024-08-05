@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hub.root.main.mybatis.mainMapper">
+<resultMap type="com.hub.root.main.dto.MainDTO" id="main">
+	<id property="store_id" column="store_id"/>
+	<result property="store_menu_img" column="store_menu_img"/>
+	<result property="store_menu_name" column="store_menu_name"/>
+	<result property="store_menu_detail" column="store_menu_detail"/>
+	<result property="store_menu_category" column="store_menu_category"/>
+	<result property="store_menu_price" column="store_menu_price"/>
+</resultMap>
+<resultMap type="com.hub.root.main.dto.MainMapDTO" id="mainMap">
+	<id property="store_id" column="store_id"/>
+	<result property="store_pwd" column="store_pwd"/>
+	<result property="store_email" column="store_email"/>
+	<result property="store_phone" column="store_phone"/>
+	<result property="store_main_phone" column="store_main_phone"/>
+	<result property="store_name" column="store_name"/>
+	<result property="store_add" column="store_add"/>
+	<result property="store_add_info" column="store_add_info"/>
+	<result property="store_category" column="store_category"/>
+	<result property="store_note" column="store_note"/>
+	<result property="store_introduce" column="store_introduce"/>
+	<result property="store_business_hours" column="store_business_hours"/>
+</resultMap>
+<resultMap type="com.hub.root.main.dto.MainImgDTO" id="mainImg">
+	<id property="store_id" column="store_id"/>
+	<result property="store_img_root" column="store_img_root"/>
+	<result property="store_img_main" column="store_img_main"/>
+</resultMap>
+<resultMap type="com.hub.root.main.dto.MainReviewDTO" id="mainReview">
+	<id property="store_review_num" column="store_review_num"/>
+	<result property="store_id" column="store_id"/>
+	<result property="member_id" column="member_id"/>
+	<result property="store_review_body" column="store_review_body"/>
+	<result property="store_review_date_create" column="store_review_date_create"/>
+	<result property="booking_id" column="booking_id"/>
+</resultMap>
+
+
+<select id="mainPage1" resultMap="main">
+	SELECT * FROM store_menu
+</select>
+
+<!-- 
+<select id="getMenuByCategory" resultMap="main">
+    SELECT m.store_menu_img, m.store_menu_name 
+    FROM store_menu m 
+    JOIN store_info i ON m.store_id = i.store_id 
+    WHERE i.store_category = #{category}
+</select>
+  -->
+ 
+<select id="getAllCategories" resultType="String">
+	SELECT DISTINCT store_category 
+	FROM store_info
+</select>
+
+<select id="getStoreImgToMain" resultMap="mainImg">
+ 	SELECT store_img_root 
+ 	FROM store_img 
+    WHERE store_id = #{storeId} 
+    AND store_img_main = 9
+    ORDER BY store_img_root DESC 
+</select>
+ 
+<select id="getStoreImage" resultMap="mainImg">
+    SELECT * 
+    FROM store_img 
+    WHERE store_id = #{storeId} 
+    AND store_img_main = 1
+    AND ROWNUM = 1
+    ORDER BY store_img_root DESC 
+</select>
+
+<select id="getStoreSmallImage" resultMap="mainImg">
+    SELECT * 
+    FROM store_img 
+    WHERE store_id = #{storeId} 
+    AND store_img_main = 9
+    ORDER BY store_img_root DESC 
+</select>
+
+<select id="getStoreInfo" resultMap="mainMap">
+	SELECT si.*
+	FROM store_info si
+	LEFT JOIN store_menu sm ON sm.store_id = si.store_id
+	<where>
+		<if test="params.keyword != null and params.keyword != ''">
+			<choose>
+				<when test="params.searchType == 'menu_name'">
+					AND si.store_name LIKE '%' || #{params.keyword} || '%'
+				</when>
+				<when test="params.searchType == 'menu_category'">
+					AND si.store_category LIKE '%' || #{params.keyword} || '%'
+				</when>
+				<otherwise>
+					AND (si.store_name LIKE '%' || #{params.keyword} || '%'
+					OR si.store_category LIKE '%' || #{params.keyword} || '%')
+				</otherwise>
+			</choose>
+		</if>
+		<if test="params.category != null and params.category != ''">
+			AND si.store_category LIKE '%' || #{params.category} || '%'
+		</if>
+	</where>
+</select>
+
+<!-- 
+<select id="getStoreInfo" resultMap="mainMap">
+    SELECT si.*, 
+           sm.store_menu_img, 
+           sm.store_menu_name, 
+           sm.store_menu_price, 
+           sm.store_menu_detail, 
+           sm.store_menu_category 
+    FROM store_info si
+    LEFT JOIN store_menu sm ON si.store_id = sm.store_id
+    <where>
+        <if test="params.keyword != null and params.keyword != ''">
+            <choose>
+                <when test="params.searchType == 'menu_name'">
+                    si.store_name LIKE '%' || #{params.keyword} || '%'
+                </when>
+                <when test="params.searchType == 'menu_category'">
+                    EXISTS (
+                        SELECT 1 FROM dual
+                        WHERE REGEXP_SUBSTR(si.store_category, '[^/]+', 1, LEVEL) = #{params.keyword}
+                        CONNECT BY REGEXP_SUBSTR(si.store_category, '[^/]+', 1, LEVEL) IS NOT NULL
+                    )
+                </when>
+                <otherwise>
+                    si.store_name LIKE '%' || #{params.keyword} || '%'
+                    OR EXISTS (
+                        SELECT 1 FROM dual
+                        WHERE REGEXP_SUBSTR(si.store_category, '[^/]+', 1, LEVEL) = #{params.keyword}
+                        CONNECT BY REGEXP_SUBSTR(si.store_category, '[^/]+', 1, LEVEL) IS NOT NULL
+                    )
+                </otherwise>
+            </choose>
+        </if>
+        <if test="params.category != null and params.category != ''">
+            AND si.store_category LIKE '%' || #{params.category} || '%'
+        </if>
+    </where>
+</select>
+ -->
+
+<select id="getStoreInfoByCategory" resultMap="mainMap">
+    SELECT si.*, sm.store_menu_img, sm.store_menu_name, sm.store_menu_price, sm.store_menu_detail, sm.store_menu_category 
+    FROM store_info si
+    JOIN store_menu sm ON si.store_id = sm.store_id
+    WHERE si.store_category LIKE '%' || #{category} || '%'
+</select>
+ 
+<select id="getPopularityList" resultMap="mainReview">
+    SELECT sr.*, mi.*
+    FROM store_review sr
+    LEFT JOIN store_info mi ON sr.store_id = mi.store_id
+    ORDER BY sr.store_review_score DESC
+</select>
+
+<select id="getReviewList" resultMap="mainReview">
+    SELECT sr.*, mi.*
+    FROM store_review sr
+    LEFT JOIN store_info mi ON sr.store_id = mi.store_id
+    ORDER BY sr.store_review_score DESC
+</select>
+
+
+<insert id="infoSave">
+	INSERT INTO store_menu(store_id, store_menu_img, store_menu_name, store_menu_price, store_menu_detail, store_menu_category) 
+	VALUES (#{store_id},#{store_menu_img},#{store_menu_name},#{store_menu_price},#{store_menu_detail},#{store_menu_category})
+</insert>
+
+<insert id="saveImagePathToStoreImg">
+    INSERT INTO store_img (STORE_ID, STORE_IMG_ROOT, STORE_IMG_MAIN) 
+    VALUES (#{store_id}, #{store_img_root}, #{store_img_main})
+</insert>
+
+<insert id="storeSave" >
+	INSERT INTO store_info (store_id, store_pwd, store_email, store_phone, store_main_phone, store_name,
+	   store_add, store_add_info, store_category, store_note, store_introduce, store_business_hours)
+    VALUES (#{store_id}, #{store_pwd},#{store_email},#{store_phone}, #{store_main_phone}, #{store_name}, #{store_add}, 
+       #{store_add_info}, #{store_category}, #{store_note}, #{store_introduce}, #{store_business_hours})
+</insert>
+
+</mapper>

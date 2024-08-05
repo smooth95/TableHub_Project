@@ -1,0 +1,425 @@
+*{
+	user-select : none;
+}
+
+body{
+	background-color: #e8e8e8;
+}
+
+label{
+	font-family: 'MangoDdobak-B';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/MangoDdobak-B.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+textarea{
+	width : 350px;
+	height : 80px;
+	resize : none;
+	padding : 10px; 
+}
+
+td:first-child {
+    vertical-align: top;
+}
+
+.header {
+    position: fixed; /* Header를 화면 상단에 고정 */
+    top: 0;
+    width: 100%; /* 전체 화면 너비만큼 */
+    z-index: 1000; /* 다른 요소들보다 위에 표시 */
+    background-color: #e8e8e8; /* 원하는 배경색 */
+    height : 150px;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #e8e8e8;
+    z-index: 1000;
+}
+
+.button1 {
+  position: relative;
+  float: right;
+  width: 100px;
+  height: 40px;
+  margin: 5px 10px 5px 0px;
+  color: black;
+  font-weight: bold;
+  font-size: 14px;
+  background: #E9F1FF  ;
+  border: 1px solid #397BE6;
+  border-radius: 5px;
+  transition: all 0.2s ;
+}
+.btn1Fade:hover {
+  background: #397BE6 ;
+  color: #ffffff;
+  font-weight: bolder;
+}
+
+.button2 {
+  position: relative;
+  float: right;
+  width: 130px;
+  height: 40px;
+  margin: 5px 10px 5px 0px;
+  color: black;
+  font-weight: bold;
+  font-size: 14px;
+  background: #E9F1FF  ;
+  border: 1px solid #397BE6;
+  border-radius: 5px;
+  transition: all 0.2s ;
+}
+.btn2Fade:hover {
+  background: #397BE6 ;
+  color: #ffffff;
+  font-weight: bolder;
+}
+
+
+.white_box{
+	width : 1000px;
+	min-height : 500px;
+	background-color: white;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column; /* 컬럼 방향으로 요소들을 배열 */
+    justify-content: center; /* 세로 방향 중앙 정렬 */
+    align-items: center; /* 가로 방향 중앙 정렬 */
+  	text-align : center;
+	margin: 10px auto;
+	padding : 10px;
+}
+
+.text_leftAlign {
+	width : 500px;
+	text-align : left;
+	line-height: 5; /* 행간을 1.5로 설정 (기본 글꼴 크기의 1.5배) */
+	margin-bottom: 50px;
+}
+
+.text_leftAlign1 {
+	width : 500px;
+	text-align : left;
+	line-height: 3; /* 행간을 1.5로 설정 (기본 글꼴 크기의 1.5배) */
+	margin-left : 50px;
+}
+
+.text_leftAlign2 {
+	width : 600px;
+	text-align : left;
+	line-height: 3; /* 행간을 1.5로 설정 (기본 글꼴 크기의 1.5배) */
+	margin-left : 50px;
+}
+
+.top_title{
+	margin-bottom: 50px;
+	
+}
+
+.text_leftAlign strong {
+    width : 150px;
+    color: black;
+    display: inline-block;
+}
+
+.text_leftAlign1 strong {
+    width : 150px;
+    color: black;
+    display: inline-block;
+}
+
+.text_leftAlign2 strong {
+    width : 150px;
+    color: black;
+    display: inline-block;
+}
+
+
+
+
+
+.center-box{
+	width: 1500px;
+	min-height : 550px;
+	display: flex;
+ 	flex-direction: column;
+ 	justify-content: center; /* 세로 방향 중앙 정렬 */
+  	align-items: center;
+	margin: 150px auto;
+	
+}
+
+.skill-box{
+	width: 1000px;
+	display: flex;
+ 	justify-content: center;
+	margin: 50px auto 15px;
+	
+}
+.skill-bar{
+	height: 8px;
+	width: 100%;
+	border-radius: 6px;
+	margin-top: 6px;
+	background: rgba(0,0,0,0.1);
+}
+
+
+.per01{
+	position: relative;
+	display: block;
+	height: 100%;
+	width: 100%;
+	border-radius: 6px;
+	background: #4070f4;
+	animation: per01 0.4s ease-in-out forwards;
+}
+.per02{
+	position: relative;
+	display: block;
+	height: 100%;
+	width: 100%;
+	border-radius: 6px;
+	background: #4070f4;
+	animation: per02 0.4s ease-in-out forwards;
+}
+.per03{
+	position: relative;
+	display: block;
+	height: 100%;
+	width: 100%;
+	border-radius: 6px;
+	background: #4070f4;
+	animation: per03 0.4s ease-in-out forwards;
+}
+.per04{
+	position: relative;
+	display: block;
+	height: 100%;
+	width: 100%;
+	border-radius: 6px;
+	background: #4070f4;
+	animation: per04 0.4s ease-in-out forwards;
+}
+.per05{
+	position: relative;
+	display: block;
+	height: 100%;
+	width: 100%;
+	border-radius: 6px;
+	background: #4070f4;
+	animation: per05 0.4s ease-in-out forwards;
+}
+
+@keyframes per01 {
+	0%{
+		width:5%;
+	}
+	100%{
+		width:25%;
+	}
+}
+@keyframes per02 {
+	0%{
+		width:27%;
+	}
+	100%{
+		width:50%;
+	}
+}
+@keyframes per03 {
+	0%{
+		width:52%;
+	}
+	100%{
+		width:75%;
+	}
+}
+@keyframes per04 {
+	0%{
+		width:77%;
+	}
+	100%{
+		width:99%;
+	}
+}
+@keyframes per05 {
+	0%{
+		width:99%;
+	}
+	100%{
+		width:100%;
+	}
+}
+
+
+.tooltip01{
+	position: absolute;
+	right: -5.7%;
+	top: -28px;
+	font-size: 10px;
+	font-weight: bolder;
+	color: #fff;
+	padding: 2px 6px;
+	boarder-radius: 3px;
+	background: #4070f4;
+	z-index : 1;
+}
+.tooltip01::before{
+	content:'';
+	position: absolute;
+	left: 50%;
+	bottom:-2px;
+	height: 10px;
+	width: 10px;
+	z-index: -1;
+	background-color: #4070f4;
+	transform: translateX(-50%) rotate(45deg);
+}
+
+.tooltip02{
+	position: absolute;
+	right: -3%;
+	top: -28px;
+	font-size: 10px;
+	font-weight: bolder;
+	color: #fff;
+	padding: 2px 6px;
+	boarder-radius: 3px;
+	background: #4070f4;
+	z-index : 1;
+}
+.tooltip02::before{
+	content:'';
+	position: absolute;
+	left: 50%;
+	bottom:-2px;
+	height: 10px;
+	width: 10px;
+	z-index: -1;
+	background-color: #4070f4;
+	transform: translateX(-50%) rotate(45deg);
+}
+
+.tooltip03{
+	position: absolute;
+	right: -2%;
+	top: -28px;
+	font-size: 10px;
+	font-weight: bolder;
+	color: #fff;
+	padding: 2px 6px;
+	boarder-radius: 3px;
+	background: #4070f4;
+	z-index : 1;
+}
+.tooltip03::before{
+	content:'';
+	position: absolute;
+	left: 50%;
+	bottom:-2px;
+	height: 10px;
+	width: 10px;
+	z-index: -1;
+	background-color: #4070f4;
+	transform: translateX(-50%) rotate(45deg);
+}
+
+.tooltip04{
+	position: absolute;
+	right: -1.5%;
+	top: -28px;
+	font-size: 10px;
+	font-weight: bolder;
+	color: #fff;
+	padding: 2px 6px;
+	boarder-radius: 3px;
+	background: #4070f4;
+	z-index : 1;
+}
+.tooltip04::before{
+	content:'';
+	position: absolute;
+	left: 50%;
+	bottom:-2px;
+	height: 10px;
+	width: 10px;
+	z-index: -1;
+	background-color: #4070f4;
+	transform: translateX(-50%) rotate(45deg);
+}
+
+.tooltip05{
+	position: absolute;
+	right: -2%;
+	top: -28px;
+	font-size: 10px;
+	font-weight: bolder;
+	color: #fff;
+	padding: 2px 6px;
+	boarder-radius: 3px;
+	background: #4070f4;
+	z-index : 1;
+}
+.tooltip05::before{
+	content:'';
+	position: absolute;
+	left: 50%;
+	bottom:-2px;
+	height: 10px;
+	width: 10px;
+	z-index: -1;
+	background-color: #4070f4;
+	transform: translateX(-50%) rotate(45deg);
+}
+
+ #map {
+            height: 400px;
+            width: 500px;
+            display: none; /* 초기에는 숨김 상태 */
+        }
+        
+.checkbox-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+.line {
+	border-botton : 1px;
+	width : 20px;
+}
+   
+
+.time-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* 각 버튼 사이의 간격 설정 */
+    margin-bottom: 20px;
+	user-select: none;
+
+}
+
+ .checkbox-button input[type="checkbox"] {
+            display: none; /* 체크박스를 숨김 */
+        }
+        .checkbox-button label {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #f0f0f0;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        .checkbox-button input[type="checkbox"]:checked + label {
+            background-color: #397BE6; /* 체크된 상태의 배경색 */
+            border-color: #699BEC; /* 체크된 상태의 테두리 색상 */
+            color: #fff; /* 체크된 상태의 글자 색상 */
+        }

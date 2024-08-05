@@ -1,0 +1,130 @@
+@charset "UTF-8";
+
+#myBoardWrapper {
+	width: 770px;
+	min-height: 500px;
+	background-color: white;
+	border: 1px solid #b5b5b5;
+		
+}
+#myBoardTable {
+/* 	width: 770px; */
+	border-collapse: collapse;
+	border-spacing: none;
+	text-align: center;
+	margin: auto;
+}
+.boardTitle {
+	border-bottom: 1px solid #b5b5b5;
+	margin: 0;
+	height: 30px;
+	padding: 5px;
+	box-sizing: border-box;
+}
+.boardContent {
+	border-bottom: 1px solid #b5b5b5;
+	height: 60px;
+	padding: 5px;
+	margin: 0;
+	box-sizing: border-box;
+	font-size: 14px;
+	vertical-align: middle;
+}
+.boardTitle:nth-child(1), .boardContent:nth-child(1) {
+	width: 60px;
+}
+.boardTitle:nth-child(2), .boardContent:nth-child(2) {
+	width: 70px;
+}
+.boardTitle:nth-child(3), .boardContent:nth-child(3) {
+	width: 120px;
+}
+.boardTitle:nth-child(4) {
+	width: 280px;
+	max-width: 280px;
+}
+.boardTitle:nth-child(5), .boardContent:nth-child(5) {
+	width: 130px;
+}
+.boardTitle:nth-child(6), .boardContent:nth-child(6) {
+	width: 80px;
+}
+.boardTitle:nth-child(7), .boardContent:nth-child(7) {
+	width: 70px;
+}
+.boardContent:nth-child(4) {
+	width: 280px;
+	align-items: left;
+	box-sizing: border-box;
+}
+tr:last-child .boardContent {
+	border-bottom: 0;
+}
+.boardContentTitle {
+	max-width: 250px;
+	display: inline-block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	text-align: left;
+	cursor: pointer;
+	padding: 5px;
+	vertical-align: middle;
+	box-sizing: border-box;
+}
+.myBoardContentCount {
+	max-width: 20px;
+	font-size: 14px;
+	display: inline-block;
+	color: #666aff;
+	line-height: 20px;
+	margin: 5px 0 5px 0;
+	vertical-align: middle;
+}
+.boardContentPage, .boardContentPageA, .boardContentPageB {
+	text-decoration: none;
+	font-weight: bold;
+	color: gray;
+	margin: 5px;
+	cursor: pointer;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+}
+.pageDisabled, .pageDisabledA, .pageDisabledB {
+	color: #d4d4d4;
+	cursor: default;
+}
+.boardContentNum {
+	cursor: pointer;
+	padding: 5px;
+}
+.boardContentPage, #boardSelectAllMsg, .boardContentPageA,
+.boardContentPageB {
+    -webkit-user-select: none;  /* Chrome, Safari, Edge */
+    -moz-user-select: none;     /* Firefox */
+    -ms-user-select: none;      /* IE10+ */
+    user-select: none;          /* 표준 문법 */
+}
+#tableBottomLeft {
+	display: inline-block;
+	width: 25%;
+	text-align: left;
+	padding-left: 10px;
+	box-sizing: border-box;
+}
+#tableBottomMiddle {
+	display: inline-block;
+	width: 50%;
+	box-sizing: border-box;
+}
+#tableBottomRight {
+	display: inline-block;
+	width: 25%;
+	text-align: right;
+	padding-right: 10px;
+	box-sizing: border-box;
+}
+#boardSelectAll {
+	
+}

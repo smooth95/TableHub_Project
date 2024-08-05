@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hub.root.member.mybatis.MemberInfoMapper">
+	<resultMap type="com.hub.root.member.dto.MemberDTO" id="member">
+		<id property="id" column="member_id" />
+		<result property="pwd" column="member_pwd"/>
+		<result property="nick" column="member_nick"/>
+		<result property="email" column="member_email"/>
+		<result property="phone" column="member_phone"/>
+		<result property="birth" column="member_birth"/>
+		<result property="gender" column="member_gender"/>
+		<result property="img" column="member_img"/>
+		<result property="status" column="member_status"/>
+		<result property="dateCreate" column="member_date_create"/>
+		<result property="admin" column="member_admin"/>
+	</resultMap>
+	<resultMap type="com.hub.root.member.dto.BookingDTO" id="booking">
+		<id property="id" column="booking_id" />
+		<result property="storeId" column="store_id"/>
+		<result property="memberId" column="member_id"/>
+		<result property="date" column="booking_date_booking"/>
+		<result property="time" column="booking_time"/>
+		<result property="person" column="booking_person"/>
+		<result property="phone" column="booking_phone"/>
+		<result property="status" column="booking_status"/>
+	</resultMap>
+	<resultMap type="com.hub.root.member.dto.BoardDTO" id="board">
+		<id property="id" column="board_id" />
+		<result property="title" column="board_title" />
+		<result property="content" column="board_content" />
+		<result property="create" column="board_date_create" />
+		<result property="modify" column="board_date_modify" />
+		<result property="memId" column="board_mem_id" />
+		<result property="view" column="board_view_num" />
+	</resultMap>
+	<resultMap type="com.hub.root.member.dto.ReviewDTO" id="review">
+		<id property="num" column="store_review_num"/>
+		<result property="storeId" column="store_id"/>
+		<result property="memberId" column="member_id"/>
+		<result property="body" column="store_review_body"/>
+		<result property="create" column="store_review_date_create"/>
+		<result property="score" column="store_review_score"/>
+	</resultMap>
+	<resultMap type="com.hub.root.member.dto.ReplyDTO" id="reply">
+		<id property="reviewId" column="board_review_id"/>
+		<result property="boardId" column="board_id"/>
+		<result property="memberId" column="member_id"/>
+		<result property="reviewContent" column="board_review_content"/>
+		<result property="reviewCreate" column="board_review_date_create"/>
+	</resultMap>
+	<resultMap type="com.hub.root.member.dto.Reply2DTO" id="reply2">
+		<id property="review2Id" column="board_review2_id"/>
+		<result property="reviewId" column="board_review_id"/>
+		<result property="memberId" column="member_id"/>
+		<result property="reviewContent" column="board_review2_content"/>
+		<result property="reviewCreate" column="board_review2_date_create"/>
+	</resultMap>
+
+	<update id="memberImgModify">
+		update member_info set member_img=#{fileName} where member_id=#{id}
+	</update>
+	
+	<update id="memberImgDelete">
+		update member_info set member_img='default.jpg' where member_id=#{id}
+	</update>
+	
+	<update id="memberNickModify">
+		update member_info set member_nick=#{nick} where member_id=#{id}
+	</update>
+	
+	<update id="memberStatusModify">
+		update member_info set member_status=#{status} where member_id=#{id}
+	</update>
+	
+	<update id="memberPhoneModify">
+		update member_info set member_phone=#{phone} where member_id=#{id}
+	</update>
+	
+	<update id="memberEmailModify">
+		update member_info set member_email=#{email} where member_id=#{id}
+	</update>
+	
+	<select id="memberPasswordChk" resultType="String">
+		select member_pwd from member_info where member_id = #{id}
+	</select>
+	
+	<update id="memberPasswordModify">
+		update member_info set member_pwd=#{pwd} where member_id=#{id}
+	</update>
+	<select id="getMemberInfo" resultMap="member">
+		select * from member_info where member_id=#{id}
+	</select>
+	
+	<select id="getMyBooking" resultMap="booking">
+		select * from booking_info where member_id=#{id} and booking_date_booking > sysdate order by  TRUNC(booking_date_booking) desc, booking_time desc	
+	</select>
+	
+	<select id="getStoreName" resultType="String">
+		select store_name from store_info where store_id=#{storeId}
+	</select>
+	
+	<select id="getStoreImg" resultType="String">
+		select NVL(( select store_img_root from store_img where store_id=#{storeId} and store_img_main = 1 and rownum = 1), 'default')as img_root from dual
+	</select>
+	
+	<select id="getReviewScore" resultType="int">
+		SELECT NVL((
+		    SELECT store_review_score 
+		    FROM store_review 
+		    WHERE booking_id = #{bookingId}
+		), 0) AS store_review_score 
+		FROM dual
+	</select>
+	
+	<select id="getBookingReadyCount" resultType="int">
+		select count(*)
+		from (
+		    select 
+		        booking_info.*,
+		        ROW_NUMBER() over( order by trunc(booking_date_booking) desc, booking_time asc) as rn
+		    from booking_info
+		    where member_id=#{id} 
+		        and trunc(booking_date_booking) > trunc(SYSDATE + INTERVAL '9' HOUR) 
+		        or (TRUNC(booking_date_booking) = TRUNC(SYSDATE + INTERVAL '9' HOUR) ANd booking_time > TO_CHAR(SYSDATE + INTERVAL '9' HOUR, 'HH24:MI'))
+		order by  TRUNC(booking_date_booking) desc, booking_time asc
+		) order by rn
+	</select>
+	
+	<select id="getBookingAlreadyCount" resultType="int">
+		select count(*)
+		from (
+		    select 
+		        booking_info.*,
+		        ROW_NUMBER() over( order by trunc(booking_date_booking) desc, booking_time asc) as rn
+		    from booking_info
+		    where member_id=#{id} 
+		        and ( 
+		        	trunc(booking_date_booking) &lt; trunc(SYSDATE + INTERVAL '9' HOUR) 
+		        	or (TRUNC(booking_date_booking) = TRUNC(SYSDATE + INTERVAL '9' HOUR) ANd booking_time &lt; TO_CHAR(SYSDATE + INTERVAL '9' HOUR, 'HH24:MI'))
+		        )
+		order by  TRUNC(booking_date_booking) desc, booking_time asc
+		) order by rn
+	</select>
+	
+	<select id="getBookingReadyContent" resultMap="booking">
+		select * 
+		from (
+		    select 
+		        booking_info.*,
+		        ROW_NUMBER() over( order by trunc(booking_date_booking) asc, booking_time asc) as rn
+		    from booking_info
+		    where member_id=#{id} 
+		        and trunc(booking_date_booking) > trunc(SYSDATE + INTERVAL '9' HOUR) 
+		        or (TRUNC(booking_date_booking) = TRUNC(SYSDATE + INTERVAL '9' HOUR) ANd booking_time > TO_CHAR(SYSDATE + INTERVAL '9' HOUR, 'HH24:MI'))
+		order by  TRUNC(booking_date_booking) desc, booking_time asc
+		)
+		where rn between #{start} and #{end}
+		order by rn
+	</select>
+	
+	<select id="getBookingAlreadyContent" resultMap="booking">
+		select * 
+		from (
+		    select 
+		        booking_info.*,
+		        ROW_NUMBER() over( order by trunc(booking_date_booking) desc, booking_time desc) as rn
+		    from booking_info
+		    where member_id=#{id} 
+		        and (
+		        	trunc(booking_date_booking) &lt; trunc(SYSDATE + INTERVAL '9' HOUR) 
+		        	or (TRUNC(booking_date_booking) = TRUNC(SYSDATE + INTERVAL '9' HOUR) ANd booking_time &lt;= TO_CHAR(SYSDATE + INTERVAL '9' HOUR, 'HH24:MI'))
+		        )
+		order by  TRUNC(booking_date_booking) desc, booking_time asc
+		)
+		where rn between #{start} and #{end}
+		order by rn
+	</select>
+	
+	<delete id="deleteBooking">
+		delete booking_info where booking_id = #{id}
+	</delete>
+	
+	<select id="pwdCheck" resultType="String">
+		select member_pwd from member_info where member_id = #{id}
+	</select>
+	
+	<delete id="deleteUser">
+		delete member_info where member_id = #{id}
+	</delete>
+	
+	<select id="getBoardCount" resultType="int">
+		select count(*) from board where board_mem_id = #{id}
+	</select>
+	
+	<select id="getBoard" resultMap="board">
+		select B.* from (
+			select rownum rn, A.*  from (
+				select * from board where board_mem_id = #{id} order by board_id desc) A ) B 
+		where rn between #{start} and #{end}
+	</select>
+	<select id="getBoardReplyCount" resultType="int">
+		select review_count + review2_count as total_count
+		from (
+		    select(
+		    select count(*) 
+		    from board_review 
+		    where board_id = #{boardId}
+		    ) as review_count,
+		    
+		    (select count(*) 
+		    from board_review2 
+		    where board_review_id in (
+		        select board_review_id 
+		        from board_review 
+		        start with board_id = #{boardId} 
+		        connect by PRIOR board_review.board_review_id = board_review2.board_review_id
+		    )) as review2_count from dual)
+	</select>
+	
+	<delete id="deleteBoard">
+		delete from board where board_id in 
+		<foreach collection="content" item="item" open="("
+		close=")" separator=",">
+		#{item}</foreach>
+	</delete>
+	
+	<select id="getReviewCount" resultType="int">
+		select count(*) from store_review where member_id = #{id}
+	</select>
+	
+	<select id="getReview" resultMap="review">
+		select B.* from (
+			select rownum rn, A.*  from (
+			select * from store_review where member_id = #{id} order by store_review_num desc ) A ) B 
+		where rn between #{start} and #{end}
+	</select>
+	
+	<select id="getReviewStoreInfo" resultType="map">
+		select
+		    (select store_name from store_info where store_id = #{storeId}) AS store_name,
+		    NVL( (select store_img_root from store_img where store_id = #{storeId} and store_img_main = 1 and rownum=1), 'default') store_img_root from dual
+	</select>
+	
+	<select id="getReviewImgInfo" resultType="String">
+		select store_review_img_image from store_review_img where store_review_num = #{reviewNum}
+	</select>
+	
+	<delete id="deleteReview">
+		delete store_review where store_review_num = #{storeNum}
+	</delete>
+	
+	<select id="getReplyCount" resultType="int">
+	    select
+			(select count(*) from board_review where member_id = #{memId}) +
+			(select count(*) from board_review2 where member_id = #{memId}) as total_count from dual
+	</select>
+	
+<!-- 	<select id="getReply" resultMap="reply"> -->
+<!-- 		select B.* from ( -->
+<!-- 			select rownum rn, A.*  from ( -->
+<!-- 				select * from board_review where member_id = #{memId} order by board_review_id desc ) A ) B  -->
+<!-- 		where rn between #{start} and #{end} -->
+<!-- 	</select> -->
+	<select id="getReply" resultType="map">
+		SELECT * FROM (
+		    SELECT
+		        rownum rn,
+		        combined.*
+		    FROM (
+		        SELECT
+		        	board_id,
+		            board_review_id,
+		            NULL AS board_review2_id,
+		            member_id,
+		            board_review_content,
+		            board_review_date_create,
+		            NULL AS board_review2_content,
+		            NULL AS board_review2_date_create,
+		            board_review_date_create AS combined_date
+		        FROM
+		            board_review
+		        WHERE
+		            member_id = #{memId}
+		        UNION ALL
+		        SELECT
+		        	NULL AS board_id,
+		            board_review_id,
+		            board_review2_id,
+		            member_id,
+		            NULL AS board_review_content,
+		            NULL AS board_review_date_create,
+		            board_review2_content,
+		            board_review2_date_create,
+		            board_review2_date_create AS combined_date
+		        FROM
+		            board_review2
+		        WHERE
+		            member_id = #{memId}
+		        ORDER BY
+		            combined_date desc
+		    ) combined
+		)
+		WHERE rn BETWEEN #{start} AND #{end}
+	</select>
+	
+	<select id="getReply2" resultMap="reply2">
+		select B.* from (
+			select rownum rn, A.*  from (
+				select * from board_review2 where member_id = #{memId} order by board_review2_id desc ) A ) B 
+		where rn between #{start} and #{end}
+	</select>
+	
+	<select id="getBoardInfo" resultType="map">
+	select review_count + review2_count as total_count , board_title
+	from (
+	    select(
+	    select count(*) 
+	    from board_review 
+	    where board_id = #{boardId}
+	    ) as review_count,
+	    
+	    (select count(*) 
+	    from board_review2 
+	    where board_review_id in (
+	        select board_review_id 
+	        from board_review 
+	        start with board_id = #{boardId}
+	        connect by PRIOR board_review.board_review_id = board_review2.board_review_id
+	    )) as review2_count,
+	    
+	    (SELECT board_title 
+	    FROM board 
+	    WHERE board_id = #{boardId}) AS board_title
+	from dual)
+	
+	
+<!-- 		SELECT  -->
+<!-- 			    (select  -->
+<!--                     COUNT(*)  -->
+<!--                 from  -->
+<!--                     board_review2  -->
+<!--                 where  -->
+<!--                     board_review_id in  -->
+<!--                         (select  -->
+<!--                             board_review_id  -->
+<!--                         from  -->
+<!--                             board_review  -->
+<!--                         where  -->
+<!--                             board_id = #{boardId})) AS count,  -->
+<!--                     (SELECT  -->
+<!--                         board_title  -->
+<!--                     FROM  -->
+<!--                         board  -->
+<!--                     WHERE  -->
+<!--                         board_id = #{boardId}) AS board_title -->
+<!-- 			FROM dual -->
+			
+			
+<!-- 	    SELECT  -->
+<!-- 		    (SELECT COUNT(*) FROM board_review WHERE board_id = ${boardId}) AS count,  -->
+<!-- 		    (SELECT board_title FROM board WHERE board_id = ${boardId}) AS board_title -->
+<!-- 		FROM dual -->
+	</select>
+	
+	<select id="getBoardInfo2" resultType="map">
+		select review_count + review2_count as total_count , board_title
+		from (
+		    select(
+		    select count(*) 
+		    from board_review 
+		    where board_id = (select board_id from board_review where board_review_id = #{reviewId})
+		    ) as review_count,
+		    
+		    (select count(*) 
+		    from board_review2 
+		    where board_review_id in (
+		        select board_review_id 
+		        from board_review 
+		        start with board_id = (select board_id from board_review where board_review_id = #{reviewId}) 
+		        connect by PRIOR board_review.board_review_id = board_review2.board_review_id
+		    )) as review2_count,
+		    
+		    (SELECT board_title 
+		    FROM board 
+		    WHERE board_id = (select board_id from board_review where board_review_id = ${reviewId})) AS board_title
+		from dual)
+	
+	
+	
+<!-- 		    SELECT  -->
+<!-- 			    (SELECT COUNT(*) FROM board_review WHERE board_id = (select board_id from board_review where board_review_id = #{reviewId})) AS count,  -->
+<!-- 			    (SELECT board_title FROM board WHERE board_id = (select board_id from board_review where board_review_id = #{reviewId})) AS board_title -->
+<!-- 			FROM dual -->
+	</select>
+	
+	<delete id="deleteReply" parameterType="java.util.List">	
+		delete from board_review where board_review_id in 
+		<foreach collection="content" item="item" open="("
+		close=")" separator=",">
+		#{item}</foreach>
+	</delete>
+	<delete id="delete2Reply" parameterType="java.util.List">	
+		delete from board_review2 where board_review2_id in 
+		<foreach collection="content" item="item" open="("
+		close=")" separator=",">
+		#{item}</foreach>
+	</delete>
+	
+	<select id="getMyContentMyInfo" resultType="map">
+		select a.*, b.*, c.*, d.*, e.* from 
+		    (select count(*) as board_count from board where board_mem_id = #{userId}) a,
+		    (select 
+		        (select count(*) as reply_count from board_review where member_id = #{userId})+
+		        (select count(*) as reply_count from board_review2 where member_id = #{userId}) as reply_count from dual) b,
+		    (select count(*) as review_count from store_review where member_id = #{userId}) c,
+		    (select round(avg(store_review_score), 1) as review_score from store_review where member_id = #{userId}) d,
+		    (select member_img from member_info where member_id = #{userId}) e
+	</select>
+	
+	<select id="getNick" resultType="String">
+		select member_nick from member_info where member_id=#{userId}
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+

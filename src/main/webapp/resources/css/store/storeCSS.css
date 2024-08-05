@@ -1,0 +1,205 @@
+
+hr {
+    background:#397BE6;
+    height:1px;
+    border:0;
+}
+a {
+	text-decoration-line: none;
+}
+
+.header {
+    position: fixed; /* Header를 화면 상단에 고정 */
+    top: 0;
+    width: 100%; /* 전체 화면 너비만큼 */
+    z-index: 1000; /* 다른 요소들보다 위에 표시 */
+    background-color: #fff; /* 원하는 배경색 */
+    height : 150px;
+}
+
+.container {
+	position: relative;
+	height: 1000px; /* 아무 내용이 없어서 스크롤 되도록 높이 설정 */
+	overflow-y: scroll; /* 세로 스크롤 표시 */
+}
+.content {
+	position: relative;
+	height: 2000px; /* 스크롤을 넘어서는 높이 설정 */
+}
+
+
+.fixed-scroll {
+    position: fixed; /* 고정된 위치에 배치 */
+    top: 0; /* 화면 상단에 위치 */
+    left: 0; /* 왼쪽에 위치 */
+    width: 100%; /* 전체 화면 너비만큼 너비 설정 */
+    height: 100vh; /* 화면 높이만큼 높이 설정 */
+    overflow-y: scroll; /* 세로 스크롤을 항상 표시 */
+}
+
+.size {
+	display: flex;
+ 	justify-content: center;
+	margin: 0 auto 15px;
+}
+
+
+.store_top {
+    position: sticky;
+    top: 150px;
+    z-index: 999;
+    display: flex;
+    justify-content: space-between; /* 이미지는 왼쪽, 버튼들은 오른쪽으로 배치 */
+    align-items: center; /* 자식 요소를 수직 가운데로 정렬 */
+    margin: 0 auto 15px;
+    width : 1500px;
+    background: white;
+    border-bottom: 1px solid #397BE6;
+    user-select: none;
+    padding: 0px 15px;
+}
+
+.store_top > img {
+    width: 100px;
+    cursor: pointer;
+}
+
+.store_name{
+	position: relative;
+    text-align: center;
+	align-items: center;
+	margin: auto;
+	width:1500px;
+    background-color: white;
+    user-select: none;
+    display: block;
+}
+
+.categories {
+	position: sticky;
+    top: 187px;
+    z-index: 998;
+    display: flex;
+ 	justify-content: center;
+	margin: 0 auto 15px;
+    width:1500px;
+    background : white;
+    user-select: none;   
+}
+
+.iframe{
+	position: relative;
+	display: flex;
+ 	justify-content: center;
+ 	align-items: center;
+	margin: auto;
+	width: 1500px;
+	user-select: none; 
+}
+
+.button1 {
+  position: relative;
+  float: right;
+  width: 100px;
+  height: 40px;
+  margin: 5px 10px 5px 0px;
+  color: black;
+  background: #C8DDFF;
+  border: 1px solid #397BE6;
+  border-radius: 20px;
+  transition: all 0.2s ;
+}
+.btn1Fade:hover {
+  background: #397BE6;
+  color: #ffffff;
+  font-weight: bolder;
+}
+
+.button2 {
+  position: relative;
+  float: right;
+  width: 100px;
+  height: 40px;
+  margin: 5px 10px 5px 0px;
+  border: 1px solid #EC5075;
+  border-radius: 20px;
+  color: black;
+  background: #FFACC0;
+  transition: all 0.2s ;
+}
+.btn2Fade:hover {
+  background: #EC5075;
+  color: #ffffff;
+  font-weight: bolder;
+}
+
+.catebutton {
+  position: relative;
+  float: left;
+  width: 20%;
+  height: 40px;
+  margin: 20px 0px 0px 0px;
+  border: 1px solid #397BE6;
+  color: black;
+  background: #E9F1FF;
+  transition: all 0.2s ;
+}
+.catebtnFade:hover {
+  background: #E9F1FF;
+  color: black;
+  font-size: 15px;
+  font-weight: bolder;
+  border: 5px solid #7CA8EF6;
+}
+
+
+.main-photo {
+	position: relative;/* 위치 지정이 있는 경우에만 자식 요소의 절대 위치를 설정할 수 있습니다. */
+	display: flex;
+ 	justify-content: center;
+	margin: 0 auto 15px;
+	width:1500px;
+	height:200px;
+	overflow: hidden;
+}
+
+.main-photo > img {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	margin: 0 auto 15px;
+ 	width:100%;
+	height:auto;
+	top: 50%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
+}
+
+
+.review-photo {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 15px auto;
+	width:1500px;
+	overflow: hidden;
+}
+
+.review-photo > img {
+	display: block;
+	width: 150px;
+	height: 100px;
+	object-fit: cover; /* 이미지가 부모 요소에 맞게 조정되면서 원래의 비율을 유지합니다. */
+	margin: 0 5px;
+}
+
+
+.infoBox {
+	 border: 2px solid #397BE6;
+	 border-radius: 10px;
+}
+	
+.div_footer {
+	position: relative;
+}

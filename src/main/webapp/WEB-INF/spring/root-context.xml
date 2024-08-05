@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+		
+		<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+			<property name="username" value="c##java"></property>
+			<property name="password" value="1234"></property>
+			<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521/orcl"></property>
+			<property name="driverClassName" value="oracle.jdbc.OracleDriver"></property>
+		</bean>
+		<!-- 데이타베이스 연동기능 -->
+		<bean id="ds" class="com.zaxxer.hikari.HikariDataSource">
+			<constructor-arg ref="hikariConfig"></constructor-arg>
+		</bean>
+		<!-- mybatis설정 -->
+		<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+			<property name="dataSource" ref="ds"></property>
+			<property name="mapperLocations" value="classpath:/mappers/**/*Mapper.xml"></property>
+		</bean>
+		<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+
+        <constructor-arg index="0" ref="sqlSessionFactory" />
+     	</bean>
+
+	<bean id="txMgr" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="ds"></property>
+	</bean>
+
+	<!-- namespaces에서 mybaties 선택후 -->
+	<mybatis-spring:scan base-package="com.hub.root.board.mybatis"/>
+	<mybatis-spring:scan base-package="com.hub.root.main.mybatis"/>
+	<mybatis-spring:scan base-package="com.hub.root.member.mybatis"/>
+	<mybatis-spring:scan base-package="com.hub.root.pos.mybatis"/>
+	<mybatis-spring:scan base-package="com.hub.root.store.mybatis"/>
+	<mybatis-spring:scan base-package="com.hub.root.businessM.mybatis"/>
+
+    
+</beans>

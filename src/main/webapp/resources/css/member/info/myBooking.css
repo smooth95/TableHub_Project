@@ -1,0 +1,235 @@
+@charset "UTF-8";
+
+#bookContentReadyWrapper {
+	width: 770px;
+	background-color: white;
+	margin-bottom: 20px;
+	min-height: 380px;
+	border: 1px solid #b5b5b5;
+}
+#bookContentAlreadyWrapper {
+	width: 770px;
+	background-color: white;
+	margin-bottom: 20px;
+	min-height: 380px;
+	border: 1px solid #b5b5b5;
+}
+#totalReadyPageMenu {
+	height: 30px;
+	padding: 0 0 10px 0;
+	text-align: center;
+}
+#totalAlreadyPageMenu {
+	height: 30px;
+	padding: 0 0 10px 0;
+	text-align: center;
+}
+.readyPageBtn {
+	text-decoration: none;
+	font-weight: bold;
+	color: gray;
+	margin: 5px;
+	cursor: pointer;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+}
+.readyPageBtnA {
+	text-decoration: none;
+	font-weight: bold;
+	color: gray;
+	margin: 5px;
+	cursor: pointer;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+}
+.readyPageBtnB {
+	text-decoration: none;
+	font-weight: bold;
+	color: gray;
+	margin: 5px;
+	cursor: pointer;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+}
+.readyPageBtnDisabled {
+	text-decoration: none;
+	font-weight: bold;
+	color: #cecece;
+	margin: 5px;
+	cursor: pointer;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+}
+.alreadyPageBtn, .alreadyPageBtnA, .alreadyPageBtnB {
+	text-decoration: none;
+	font-weight: bold;
+	color: #636363;
+	margin: 5px;
+	cursor: pointer;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+}
+.alreadyPageBtnDisabled {
+	text-decoration: none;
+	font-weight: bold;
+	color: #cecece;
+	margin: 5px;
+	cursor: pointer;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+}
+
+.alreadyPageBtn, .alreadyPageBtnA, .alreadyPageBtnB,
+.alreadyPageBtnDisabled {
+    -webkit-user-select: none;  /* Chrome, Safari, Edge */
+    -moz-user-select: none;     /* Firefox */
+    -ms-user-select: none;      /* IE10+ */
+    user-select: none;          /* 표준 문법 */
+}
+#readyContent {
+	margin: 20px;
+	padding-bottom: 20px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 30px; 
+	
+}
+#alreadyContent {
+	margin: 20px;
+	padding-bottom: 20px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 30px; 
+	
+}
+.readyContentInfo {
+	background-color: #e9e9e9;
+	border-radius: 12px;
+	box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
+}
+.alreadyContentInfo {
+	background-color: #e9e9e9;
+	border-radius: 12px;
+	box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.bookingStoreName {
+	display: inline-block;
+	max-width: 60%;
+	font-size: 17px;
+	margin: 5px 5px 5px 10px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap; 
+	font-weight: bold;
+}
+.bookingStatusReady {
+	display: inline-block;
+	font-size: 12px;
+	margin-top: 15px;
+	vertical-align: top;
+	color: #5151ff;
+	font-weight: bold;
+	
+}
+
+.bookingStatusAlready {
+	display: inline-block;
+	font-size: 12px;
+	margin-top: 15px;
+	vertical-align: top;
+	color: #8c8c8c;
+	font-weight: bold;
+	
+}
+.bookingDelete {
+	margin: 5px 0;
+	width: 20px;
+	float: right;
+	color: #adadad;
+	cursor: pointer;
+}
+.bookingStoreImg {
+	width: 100%;
+	height: 150px;
+}
+.bookingDate {
+	margin: 5px 0 5px 10px;
+	font-size: 12px;
+	font-weight: bold;
+	
+}
+.bookingPerson {
+	margin: 0 0 5px 10px;
+	font-size: 12px;
+	font-weight: bold;
+}
+.bookingStatusReviewReady {
+	display: inline-block;
+	margin: 0 auto 5px auto;
+	font-weight: bold;
+	width: 223px;
+	text-align: center;
+}
+.bookingStatusReviewTimeout {
+	display: inline-block;
+	margin: 0 auto 5px auto;
+	font-weight: bold;
+	width: 223px;
+	text-align: center;
+	color: #ff7d7d;
+}
+.bookingStatusReviewComplete {
+	display: inline-block;
+	margin: 0 auto 5px auto;
+	font-weight: bold;
+	width: 150px;
+	text-align: center;
+}
+.bookingStatusReviewScore {
+	display: inline-block;
+	margin: 0 auto 5px auto;
+	width: 55px;
+	text-align: center;
+	font-size: 12px;
+}
+.bookingStatusReviewReady {
+	display: inline-block;
+	margin: 0 auto 5px auto;
+	font-weight: bold;
+	width: 100%;
+	text-align: center;
+	color: #6868ff;
+}
+.contentHr {
+	margin: 5px;
+}
+
+.contentTitle{
+	display: inline-block;
+	font-size: 26px;
+	font-weight: bold;
+	font-family: fantasy;
+	margin: 20px 0 10px 20px;
+}
+.contentNothing {
+	font-size: 30px;
+	width: 730px;
+	text-align: center;
+	height: 270px;
+	line-height: 270px;
+}
+
+
+
+
+
+
+
+

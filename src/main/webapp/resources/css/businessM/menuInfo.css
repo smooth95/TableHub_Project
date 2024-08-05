@@ -1,0 +1,171 @@
+
+form {
+    padding: 20px;
+    width: 90%;
+    max-width: 950px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    text-align : center;
+    border: 1px solid #05398C;
+}
+
+th, td {
+	text-align: center;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #05398C; /* 가는 선 */
+}
+
+th {
+    background-color: #E9F1FF; /* 헤더 배경 색상 */
+    color: black; /* 헤더 텍스트 색상 */
+    border: 1px solid #05398C;
+}
+
+td input[type="text"], td input[type="number"], td select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+.menu-form th:nth-child(1),
+.menu-form td:nth-child(1) {
+    width: 18%; /* 첫 번째 열의 너비를 20%로 설정 */
+}
+
+.menu-form th:nth-child(2),
+.menu-form td:nth-child(2) {
+    width: 23%; /* 두 번째 열의 너비를 30%로 설정 */
+}
+
+.menu-form th:nth-child(3),
+.menu-form td:nth-child(3) {
+    width: 18%; /* 세 번째 열의 너비를 15%로 설정 */
+}
+
+.menu-form th:nth-child(4),
+.menu-form td:nth-child(4) {
+    width: 10%; /* 네 번째 열의 너비를 25%로 설정 */
+}
+
+.menu-form th:nth-child(5),
+.menu-form td:nth-child(5) {
+    width: 31%; /* 다섯 번째 열의 너비를 10%로 설정 */
+}
+
+
+
+.button01 {
+    background-color: #E9F1FF; /* 버튼 배경 색상 */
+    color: black; /* 버튼 텍스트 색상 */
+    display: flex;
+    justify-content: flex-start; /* 왼쪽 정렬 */
+    border: 1px solid #397BE6;
+    padding: 10px 15px;
+    margin : 10px auto;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.button01:hover {
+    background-color: #397BE6; /* 버튼 호버 색상 */
+    color: white;
+}
+
+.button01:active {
+    background-color: #7CA8EF; /* 버튼 클릭 색상 */
+}
+
+.button02 {
+    background-color: #E9F1FF; /* 버튼 배경 색상 */
+    color: black; /* 버튼 텍스트 색상 */
+    display: flex;
+    justify-content: flex-end; /* 오른 정렬 */
+    border: 1px solid #397BE6;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.button02:hover {
+    background-color: #397BE6; /* 버튼 호버 색상 */
+    color: white;
+}
+
+
+select {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+}
+
+input[type="file"] {
+    border: none;
+    padding: 0;
+}
+
+.white-box{
+	width : 1000px;
+	min-height : 500px;
+	background-color: white;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column; /* 컬럼 방향으로 요소들을 배열 */
+    align-items: center; /* 가로 방향 중앙 정렬 */
+  	text-align : center;
+	margin: 10px auto;
+	padding : 10px;
+	
+}
+
+.center-box{
+	width: 1500px;
+	display: flex;
+ 	flex-direction: column;
+  	align-items: center;
+	margin: 150px auto;
+	
+}
+
+.center-box2{
+	display: flex;
+ 	flex-direction: column;
+ 	justify-content: center;
+  	align-items: center;
+  	padding : 80px;
+	
+}
+
+
+.button1 {
+  position: relative;
+  float: right;
+  width: 150px;
+  height: 40px;
+  margin: 5px 10px 5px 0px;
+  color: black;
+  font-weight: bold;
+  font-size: 14px;
+  background: #E9F1FF  ;
+  border: 1px solid black;
+  border-radius: 5px;
+  transition: all 0.2s ;
+}
+.btn1Fade:hover {
+  background: #397BE6 ;
+  border: none;
+  color: #ffffff;
+  font-weight: bolder;
+}

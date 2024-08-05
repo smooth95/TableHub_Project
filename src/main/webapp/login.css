@@ -1,0 +1,14 @@
+@charset "UTF-8";
+#bodyWrapper {
+	display: flex;	
+}
+#loginWrapper {
+	background-color: red;
+	width: 100px;
+	height: 100px;
+}
+#registerWrapper {
+	background-color: blue;	
+	width: 100px;
+	height: 100px;
+}

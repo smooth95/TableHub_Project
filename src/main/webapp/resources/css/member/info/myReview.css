@@ -1,0 +1,149 @@
+@charset "UTF-8";
+
+#myReviewWrapper {
+	width: 770px;
+	min-height: 500px;
+	background-color: white;
+	border: 1px solid #b5b5b5;
+		
+}
+
+#myReviewContentWrapper {
+	text-align: center;
+}
+
+/* reviewWrapper 에서 가게 정보에 관한 부분 */
+.storeInfo {
+	display: flex;
+}
+.storeInfoLeft {
+	margin-left: 20px;
+	margin-top: 10px;
+}
+.storeInfoMiddle {
+	margin-left: 20px;
+	margin-top: 10px;
+	text-align: left;
+}
+.storeInfoRight {
+	margin-left: auto;
+	margin-right : 20px;
+	margin-top: 10px;
+}
+.storeImg {
+	width: 70px;
+	height: 60px;
+}
+.storeInfoTitle {
+	margin-top: 5px;
+	margin-bottom: 3px;
+	font-size: 17px;
+	display: inline-block;
+	font-weight: bold;
+}
+.storeInfoScoreStar {
+	color: gray;
+	display: inline-block;
+	font-weight: bold;
+}
+.storeInfoScore {
+	display: inline-block;
+	font-size: 14px;
+	font-weight: bold;
+	color: gray;
+	margin-left: 3px;
+	vertical-align: bottom;
+}
+.storeInfoCreate {
+	font-size: 13px;
+	color: gray;
+	vertical-align: bottom;
+	margin-left: 20px;
+	font-weight: bold;
+}
+
+/* reviewWrapper에서 리뷰에 관한 부분 */
+.reviewInfo {
+	display: flex;
+}
+.reviewInfoLeft {
+	margin-left: 20px;
+	margin-top: 10px;
+}
+.reviewInfoMiddle {
+	margin-top: 10px;
+	margin-left: 10px;
+}
+.reviewInfoImg {
+	width: 100px;
+	height: 80px;
+	margin-bottom: 10px;
+}
+.reviewInfoContent {
+	display: inline-block;
+	width: 500px;
+	height: 80px;
+	border: 0;
+	resize: none;
+	padding: 0;
+}
+.reviewInfoContent:disabled {
+	background-color: white;
+	color: black;
+}
+.storeInfoDelete {
+	cursor: pointer;
+	font-weight: bold;
+	color: gray;
+}
+
+
+
+
+.reviewContentPage, .reviewContentPageA, .reviewContentPageB {
+	text-decoration: none;
+	font-weight: bold;
+	color: gray;
+	margin: 5px;
+	cursor: pointer;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+}
+.pageDisabled, .pageDisabledA, .pageDisabledB {
+	color: #d4d4d4;
+	cursor: default;
+}
+.reviewContentNum {
+	cursor: pointer;
+	padding: 5px;
+}
+.reviewContentPage, #reviewSelectAllMsg, .reviewContentPageA,
+.reviewContentPageB {
+    -webkit-user-select: none;  /* Chrome, Safari, Edge */
+    -moz-user-select: none;     /* Firefox */
+    -ms-user-select: none;      /* IE10+ */
+    user-select: none;          /* 표준 문법 */
+}
+#divBottomLeft {
+	display: inline-block;
+	width: 25%;
+	text-align: left;
+	padding-left: 10px;
+	box-sizing: border-box;
+}
+#divBottomMiddle {
+	display: inline-block;
+	width: 50%;
+	box-sizing: border-box;
+	text-align: center;
+	padding: 15px 0 15px 0;
+	margin-top: -5px;
+}
+#divBottomRight {
+	display: inline-block;
+	width: 25%;
+	text-align: right;
+	padding-right: 10px;
+	box-sizing: border-box;
+}

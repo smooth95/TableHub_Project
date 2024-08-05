@@ -1,0 +1,129 @@
+@charset "UTF-8";
+
+#myReplyWrapper {
+	width: 770px;
+	min-height: 500px;
+	background-color: white;
+	border: 1px solid #b5b5b5;
+		
+}
+
+#myReplyContentWrapper {
+	text-align: center;
+}
+.myReplyContent {
+	display: flex;
+	align-items: center;
+}
+.myReplyTitle {
+	display: flex;
+}
+.myReplyContentLeft {
+	width: 10%;
+	box-sizing: border-box;
+}
+.myReplyTitleLeft {
+	width: 10%;
+	display: inline-block;
+	box-sizing: border-box;
+}
+.myReplyContentMiddle {
+	width: 60%;
+	box-sizing: border-box;
+	text-align: left;
+	padding-left: 10px;
+}
+.myReplyTitleMiddle {
+	width: 60%;
+	display: inline-block;
+	box-sizing: border-box;
+	align-items: center;
+}
+.myReplyContentRight {
+	width: 30%;
+	box-sizing: border-box;
+}
+.myReplyTitleRight {
+	width: 30%;
+	display: inline-block;
+	box-sizing: border-box;
+}
+.myReplyContentCheck {
+	margin: auto;
+}
+.myReplyContentReply {
+	margin: 5px 0 5px 0;
+	display: flex;
+	font-weight: bold;
+}
+.myReplyContentBody {
+	color: #909090;
+	font-size: 15px;
+	margin: 0 0 5px 0;
+	display: inline-block;
+}
+.myReplyContentCount {
+	font-size: 14px;
+	color: #666aff;
+	display: inline-block;
+	line-height: 20px;
+	margin: 0 0 5px 0;
+}
+
+#bottomWrapper {
+	display: flex;
+	padding: 10px;
+}
+.myReplyContentBottomLeft {
+	width: 25%;
+	text-align: left;
+	margin-left: 20px;
+	box-sizing: border-box;
+}
+.myReplyContentBottomMiddle {
+	width: 50%;
+	box-sizing: border-box;
+}
+.myReplyContentBottomRight {
+	width: 25%;
+	text-align: right;
+	box-sizing: border-box;
+	padding-right: 20px;
+}
+
+.pageBtn, .pageBtnA, .pageBtnDisabled {
+	text-decoration: none;
+	font-weight: bold;
+	color: gray;
+	margin: 5px;
+	cursor: pointer;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+}
+.pageBtnDisabled {
+	color: #d4d4d4;
+	cursor: default;
+}
+
+
+.pageBtn, .pageBtnDisabled, .pageBtnA,
+.myReplyContentBottomLeft {
+    -webkit-user-select: none;  /* Chrome, Safari, Edge */
+    -moz-user-select: none;     /* Firefox */
+    -ms-user-select: none;      /* IE10+ */
+    user-select: none;          /* 표준 문법 */
+}
+
+.myReplyHr {
+	color: #cfcfcf;
+	margin: 5px;
+}
+
+.replyType {
+	font-size: 14px;
+	color: #bfbfbf;
+	justify-content: center;
+	display: inline-block;
+	margin-right: 10px;
+}

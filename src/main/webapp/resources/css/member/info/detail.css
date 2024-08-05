@@ -1,0 +1,256 @@
+@charset "UTF-8";
+#myPageContentWrapper {
+/* 	border-radius: 10px; */
+/* 	box-shadow:  */
+/* 	    1px 1px 6px rgba(0, 0, 0, 0.1), */
+/* 	    -1px 1px 6px rgba(0, 0, 0, 0.1), */
+/* 	    1px -1px 6px rgba(0, 0, 0, 0.1), */
+/* 	    -1px -1px 6px rgba(0, 0, 0, 0.1); */
+/* 	height: 1000px; */
+}
+#infoContentWrapper {
+	width: 770px;
+	background-color: white;
+	border: 1px solid #b5b5b5;
+}
+#infoContent {
+	margin: auto;
+	width: 710px;
+	border-spacing: none;
+	border-collapse: collapse;
+	margin-bottom: 40px;
+	margin-top: 20px;
+}
+#infoContentTitle {
+	display: inline-block;
+	font-size: 26px;
+	font-weight: bold;
+	font-family: fantasy;
+	margin: 20px 0 10px 20px;
+}
+.contentHr {
+	margin: 5px;
+}
+tr:first-child th, tr:first-child td {
+	border-top: 3px double #646464;
+}
+th, td{
+	border-bottom: 1px solid #bbbbbb;	
+}
+th {
+	width: 180px;
+	font-size: 18px;
+	background-color: #f2f2ff;
+}
+td {
+	padding: 40px 0 15px 20px;
+}
+#infoId {
+	width: 100%;
+}
+#infoNick {
+	width: 80%;
+	margin-right: -6px;
+}
+#infoNickBtn {
+	width: 20%;
+}
+#infoNick, #infoStatus {
+	width: 80%;
+	margin-right: -6px;
+}
+#infoNickBtn, #infoStatusBtn {
+	width: 20%;
+}
+#infoStatusBtn {
+	height : 100px;
+}
+#infoEmailLocal {
+	width: 35%;
+}
+#infoEmailDomain {
+	width: 35%;
+	margin-right: -6px;
+}
+#infoEmailAt {
+	font-size: 20px;
+	margin: 0 -3px 0 -3px;
+}
+#infoEmailCodeSendBtn {
+	width: 25%;
+}
+#infoEmailCodeInput {
+	margin-top: 15px;
+	width: 75%;
+	margin-right: -6px;
+}
+#infoEmailCodeChk {
+	margin-top: 15px;
+	width: 25%;
+}
+
+#currentPwd {
+	width: 75%;
+	margin-right: -6px;
+}
+#currentPwdChk{
+	width: 25%;
+}
+#changePwd{
+	width: 75%;
+	margin-right: -6px;
+}
+#changePwdAgain{
+	width: 75%;
+	margin-right: -6px;
+	margin-top: 10px;
+}
+#changePwdChk{
+	width: 25%;
+	margin-top: 10px;
+}
+#infoPhoneArea {
+	width: 80px;
+}
+#infoPhone1 {
+	width: 130px;
+}
+#infoPhone2 {
+	width: 130px;
+	margin-right: -6px;
+}
+#infoPhoneBtn {
+	width: 25%;
+}
+#infoPhoneCode {
+	margin-right: -6px;
+	width: 75%;
+	
+}
+#changePwdBtn {
+	margin-top: 10px;
+}
+#infoPhoneCodeBtn {
+	width: 25%;
+}
+.phoneDash {
+	font-size: 20px;
+	margin-left: 5px;
+	margin-right: 1px;
+}
+.inputText {
+	height: 40px;
+	border: 1px solid #c5c5c5;
+	background-color: #f7f7f7;
+	font-size: 18px;
+	padding: 0 0 0 15px;
+	box-sizing: border-box;
+	font-weight: bold;
+	color: #363636;
+	vertical-align: middle;
+}
+.inputText::placeholder {
+	color: #a8a8a8;
+}
+#infoStatus {
+	height: 100px;
+	border: 1px solid #c5c5c5;
+	background-color: #f7f7f7;
+	font-size: 18px;
+	padding: 0 0 0 15px;
+	box-sizing: border-box;
+	font-weight: bold;
+	color: #363636;
+	vertical-align: middle;
+	
+}
+#infoStatusMsg {
+	width: 280px;
+}
+#infoStatusByte {
+	text-align: right;
+	width: 100px;
+}
+#infoPhoneArea, #infoEmailDomain {
+	padding-right:  10px;
+}
+input[type="button"] {
+	height: 40px;
+	border: 1px solid #c5c5c5;
+/* 	background-color: #4874e6; */
+	background-color: gray;
+	font-size: 18px;
+	cursor: pointer;
+	padding: 0;
+	box-sizing: border-box;
+	font-weight: bold;
+	color: white;
+	vertical-align: middle;
+}
+
+.infoMsg {
+	display: inline-block;
+	font-size: 12px;
+	height : 16px;
+	color: #b9b9b9;
+	margin-left: 10px;
+}
+#infoFileModifyBtn {
+	display: inline-block;
+/* 	border: 1px solid black; */
+	height : 30px;
+	width: 60px;
+	font-size: 14px;
+	cursor: pointer;
+	padding: 0;
+	box-sizing: border-box;
+	font-weight: bold;
+/* 	margin-left: 12px; */
+	margin-right: 10px;
+}
+#infoFileDeleteBtn {
+	display: inline-block;
+/* 	border: 1px solid black; */
+	height : 30px;
+	width: 60px;
+	font-size: 14px;
+	cursor: pointer;
+	padding: 0;
+	box-sizing: border-box;
+	font-weight: bold;
+	margin-right: 20px;
+}
+#infoFileSaveBtn {
+	display: inline-block;
+/* 	border: 1px solid black; */
+	height : 30px;
+	width: 60px;
+	font-size: 14px;
+	cursor: pointer;
+	padding: 0;
+	box-sizing: border-box;
+	font-weight: bold;
+	margin-right: 20px;
+	margin-left: -6px;
+}
+#imgWrapper {
+	height: 130px;
+	width: 130px;
+	align-content: center;
+	text-align: center;
+}
+
+input[type="button"]:disabled {
+	background-color: #bfbfbf;
+} 
+
+
+
+input[type=number]::-webkit-outer-spin-button,
+        input[type=number]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+
+

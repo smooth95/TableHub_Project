@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hub.root.businessM.mybatis.businMMapper">
+	<resultMap type="com.hub.root.businessM.DTO.businMDTO" id="businM">
+		<id property="store_id" column="store_id" /> <!-- 사업자번호 -->
+		<result property="store_name" column="store_name"/>
+		<result property="store_pwd" column="store_pwd"/>
+		<result property="store_email" column="store_email"/>
+		<result property="store_phone" column="store_phone"/> <!-- 사장 전번 -->
+		<result property="store_main_phone" column="store_main_phone"/> <!-- 가게 전번 -->
+		
+		<result property="store_zip" column="store_zip"/>
+		<result property="store_add" column="store_add"/>
+		<result property="store_add_info" column="store_add_info"/>
+		
+		<result property="store_category" column="store_category"/>
+		<result property="store_amenities" column="store_amenities"/>
+		<result property="store_note" column="store_note"/>
+		<result property="store_introduce" column="store_introduce"/>
+		<result property="store_booking_rule" column="store_booking_rule"/>
+		<result property="store_business_hours" column="store_business_hours"/>
+		
+		<result property="store_max_person" column="store_max_person"/>
+		<result property="store_max_team" column="store_max_team"/>
+		<result property="store_open_status" column="store_open_status"/>
+	</resultMap>
+	
+	<resultMap type="com.hub.root.businessM.DTO.businMMenuDTO" id="businMMenu">
+		<id property="store_id" column="store_id" /> <!-- 사업자번호 -->
+		<result property="store_menu_img" column="store_menu_img"/>
+		<result property="store_menu_name" column="store_menu_name"/>
+		<result property="store_menu_detail" column="store_menu_detail"/>
+		<result property="store_menu_category" column="store_menu_category"/>
+		<result property="store_menu_price" column="store_menu_price"/>
+	</resultMap>
+	
+	<resultMap type="com.hub.root.businessM.DTO.businMPhotoDTO" id="businMPhoto">
+		<id property="store_id" column="store_id" /> <!-- 사업자번호 -->
+		<result property="store_img_root" column="store_img_root"/>
+		<result property="store_img_main" column="store_img_main"/>
+	</resultMap>
+	
+	
+	<resultMap type="com.hub.root.businessM.DTO.BookPageDTO" id="bookPageDTO">
+		<id property="booking_id" column="BOOKING_ID" />
+		<result property="store_id" column="STORE_ID" />
+		<result property="member_id" column="MEMBER_ID" />
+		<result property="booking_date_booking" column="BOOKING_DATE_BOOKING" />
+		<result property="booking_time" column="BOOKING_TIME" />
+		<result property="booking_person" column="BOOKING_PERSON" />
+		<result property="booking_phone" column="BOOKING_PHONE" />
+		<result property="booking_status" column="BOOKING_STATUS" />
+	</resultMap>
+	
+	<resultMap type="com.hub.root.businessM.DTO.storeReviewDTO" id="review">
+		<id property="storeReviewNum" column="store_review_num"/>
+		<result property="storeId" column="store_id"/>
+		<result property="memberId" column="member_id"/>
+		<result property="storeReviewBody" column="store_review_body"/>
+		<result property="storeReviewDateCreate" column="store_review_date_create"/>
+		<result property="storeReviewScore" column="store_review_score"/>
+		<result property="bookingId" column="booking_id"/>
+	</resultMap>
+	
+	<resultMap type="com.hub.root.businessM.DTO.ReservationDTO" id="reservationDTO">
+		<result property="store_max_team" column="store_max_team"/>
+		<result property="store_business_hours" column="store_business_hours"/>
+		<result property="store_add" column="store_add"/>
+		<result property="store_add_info" column="store_add_info"/>
+		<result property="store_name" column="store_name"/>
+	
+	</resultMap>
+
+	<select id="businMChk" resultMap="businM">
+		SELECT store_name FROM store_info WHERE store_id = #{store_id}
+	</select>
+	
+	<select id="businMChk2" resultMap="businM">
+		SELECT * FROM store_info WHERE store_id = #{store_id}
+	</select>
+	
+	
+	<update id="register">
+		UPDATE store_info
+			SET store_zip = #{store_zip}, store_add = #{store_add},
+			    store_add_info = #{store_add_info}, store_introduce = #{store_introduce},
+			    store_category = #{store_category}, store_business_hours = #{store_business_hours},
+			    store_amenities = #{store_amenities}, store_note = #{store_note},
+			    store_max_person = #{store_max_person}, store_booking_rule = #{store_booking_rule}
+			WHERE store_id = #{store_id}
+	</update>
+	
+	<select id="infoChk" resultMap="businM">
+		SELECT * FROM store_info WHERE store_id = #{store_id}
+	</select>	
+	
+	<select id="menuChk" resultMap="businMMenu">
+		SELECT * FROM store_menu WHERE store_id = #{store_id}
+	</select>	
+	
+	<select id="menuNum" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM store_menu WHERE store_id = #{store_id}
+	</select>
+	
+	<delete id="menuDel">
+		DELETE FROM store_menu WHERE store_id = #{store_id}
+	</delete>
+	
+	<delete id="storeImageDelete">
+		DELETE FROM store_img WHERE store_id = #{store_id}
+	</delete>
+	
+	<select id="photoChk" resultMap="businMPhoto">
+		SELECT * FROM store_img WHERE store_id = #{store_id} and store_img_main = 9
+	</select>
+	
+	<select id="photoMainChk" resultType="java.lang.String">
+		SELECT store_img_root FROM store_img WHERE store_id = #{store_id} and store_img_main = 1
+	</select>
+	
+	 <!--  
+	<insert id="storeImage01">
+		INSERT INTO store_img (store_id, store_img_root, store_img_main) VALUES (#{store_id}, #{file01Path}, 1)
+	</insert>
+	
+	<insert id="storeImage09">
+		INSERT INTO store_img (store_id, store_img_root, store_img_main) VALUES (#{store_id}, #{filePath}, 9)	
+	</insert>
+	-->
+	
+	
+   <insert id="storeImage01" parameterType="java.util.Map">
+	    <foreach collection="FilePaths" item="filePath" separator=" " open="INSERT ALL" close="SELECT * FROM DUAL" index="index">
+	        INTO store_img VALUES (
+	            #{store_id},
+	            #{filePath},
+	            <choose>
+		            <when test="index == 0">
+	                    1
+	                </when>
+	                <otherwise>
+	                    9
+	                </otherwise>
+	            </choose>
+	        )
+	    </foreach>
+	</insert>
+	
+	<insert id="menuRegister" parameterType="java.util.Map">
+	         <foreach collection="categories" item="category" index="index" separator=" " open="INSERT ALL" close="SELECT * FROM DUAL">
+	        INTO store_menu VALUES (
+	            #{store_id},  
+	            #{photos[${index}]}, 
+	            #{names[${index}]}, 
+	            #{prices[${index}]}, 
+	            #{notes[${index}]}, 
+	            #{category}
+	            )
+        </foreach>
+	</insert>
+
+	
+	<!--   
+	<update id="keepLogin">
+		update membership set session_id = #{ autoLogin } where id=#{id}
+	</update>
+	
+	<select id="getMember" resultMap="businM">
+		select * from membership where id=#{id}
+	</select>
+-->
+
+
+ <!-- 민석 부분 -->
+ <select id="book" resultMap="bookPageDTO">	    
+	select 
+	    a.booking_id, 
+	    a.store_id, 
+	    a.booking_date_booking, 
+	    a.booking_time, 
+	    a.booking_person,
+	    a.booking_status,
+	    member_nick,
+	    member_phone
+	from (
+	        select 
+	            rownum as num,
+	            b.member_nick,
+	            b.member_phone,
+	            book.* 
+	        from 
+	        (
+	            select 
+	                c.*
+	            from booking_info c
+	            <choose>
+	        		<when test='type != null and type.equals("past")'>
+		        		<![CDATA[
+			        		where TO_DATE(c.booking_date_booking, 'YY/MM/DD')< TO_DATE(CURRENT_DATE, 'YY/MM/DD')
+			        			and c.store_id = #{store_id}
+		        		]]>
+		        	</when>
+		        	<otherwise>
+		        		<![CDATA[
+			        		where TO_DATE(c.booking_date_booking, 'YY/MM/DD') >= TO_DATE(CURRENT_DATE, 'YY/MM/DD')
+			        			and c.store_id = #{store_id}
+		        		]]>
+		        	</otherwise>
+	        	</choose> 
+	            order by c.booking_date_booking desc
+	        )book
+	        inner join member_info b 
+	            on book.member_id = b.member_id
+	      ) a
+	 where
+	    num between #{start} and #{end}
+ </select>
+ 
+ 
+ <select id="reservationInfo" resultMap="reservationDTO">
+ 	select store_max_team, store_business_hours, store_add, store_add_info, store_name from store_info where store_id = #{store_id}
+ </select>
+ 
+<!--  !!!!!!끝!!!!!!! -->
+<select id="totalPage" resultType="int">
+	select
+		 count(*) 
+	from 
+		booking_info
+		<choose>
+			<when test='type != null and type.equals("past")'>
+				<![CDATA[
+					where TO_CHAR(booking_date_booking, 'YY/MM/DD') < TO_CHAR(CURRENT_DATE, 'YY/MM/DD')
+			        	and store_id = #{store_id}	
+			    ]]>				
+			</when>
+			<otherwise>
+				<![CDATA[
+					where TO_CHAR(booking_date_booking, 'YY/MM/DD') >= TO_CHAR(CURRENT_DATE, 'YY/MM/DD')
+			        	and store_id = #{store_id}
+			    ]]>			
+			</otherwise>
+		</choose>
+</select> 
+
+
+	<select id="getReview" resultMap="review">
+		select b.* from (
+		    select rownum rn, a.* 
+		        from (
+		            select * 
+		            from store_review 
+		            where store_id = #{storeId}
+		            order by store_review_num desc
+		            ) a 
+		        ) b 
+		    where rn 
+		    between #{startNum} and #{endNum}
+	</select>
+	<select id="getReviewDetail" resultType="map">
+		select a.*, b.*  from (
+		    select member_nick, member_img
+		    from member_info 
+		    where member_id = #{memId}
+		    ) a,
+		    (
+		    select NVL ((select store_review_img_image 
+		    from store_review_img 
+		    where store_review_num = #{reviewNum}), 'default.jpg') 
+		        as store_review_img_image 
+		        from dual
+		    ) b
+	</select>
+	
+	<select id="getTotalReview" resultType="int">
+		select count(*) from store_review where store_id=#{storeId}
+	</select>
+	
+	<delete id="deleteReview">
+		delete from store_review where store_review_num in 
+		<foreach collection="reviews" item="item" open="("
+		close=")" separator=",">
+		#{item}</foreach>
+	</delete>
+</mapper>
